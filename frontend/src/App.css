@@ -1,86 +1,202 @@
-/* Basic Reset and Global Styles */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/*
+ * Automated B2B Sales Lead Qualification - Styles
+ *
+ * This file contains all the CSS for the application,
+ * including global styles, component-specific styles,
+ * and media queries for responsiveness.
+ */
+
+/* ========================================================================= */
+/* Global Styles & Reset */
+/* ========================================================================= */
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
+}
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --bg-color-light: #f4f7f6;
+    --bg-color-white: #ffffff;
+    --text-color-dark: #2c3e50;
+    --text-color-medium: #7f8c8d;
+    --text-color-light: #ecf0f1;
+    --border-color: #ddd;
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --font-family-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    font-family: var(--font-family-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
+    width: 100%;
 }
 
-.header {
+.main-content {
+    flex: 1;
+    padding-bottom: 2rem;
+}
+
+/* ========================================================================= */
+/* Utility Classes */
+/* ========================================================================= */
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.1s ease;
     text-align: center;
-    margin-bottom: 2rem;
 }
 
-.header h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
+.btn:active {
+    transform: scale(0.98);
 }
 
-.header p {
-    color: #7f8c8d;
-    font-size: 1.1rem;
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--bg-color-white);
 }
 
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--bg-color-white);
+}
+
+.btn-secondary:hover {
+    background-color: #27ad60;
+}
+
+.btn-danger {
+    background-color: var(--accent-color);
+    color: var(--bg-color-white);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.card {
+    background: var(--bg-color-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+}
+
+/* ========================================================================= */
 /* Navbar */
+/* ========================================================================= */
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #34495e;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--text-color-dark);
+    color: var(--text-color-light);
+    box-shadow: var(--shadow-light);
 }
 
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    color: white;
+    color: var(--bg-color-white);
     text-decoration: none;
+    letter-spacing: 0.5px;
 }
 
-.navbar-links a {
-    color: white;
+.navbar-links a,
+.navbar-links button {
+    color: var(--bg-color-white);
     text-decoration: none;
     margin-left: 1.5rem;
-    transition: color 0.3s ease;
+    font-weight: 500;
 }
 
-.navbar-links a:hover {
-    color: #3498db;
+.navbar-links button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-links a:hover,
+.navbar-links button:hover {
+    color: var(--primary-color);
 }
 
 .btn-logout {
-    background: #e74c3c;
-    color: white;
-    border: none;
+    background-color: var(--accent-color);
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    color: white;
 }
 
-.btn-logout:hover {
-    background-color: #c0392b;
+/* ========================================================================= */
+/* HomePage */
+/* ========================================================================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
 }
 
-/* Lead Form */
+.header h1 {
+    font-size: 2.5rem;
+    color: var(--text-color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: var(--text-color-medium);
+    font-size: 1.1rem;
+}
+
+/* ========================================================================= */
+/* LeadForm */
+/* ========================================================================= */
+
 .lead-form-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .lead-form .form-group {
@@ -97,54 +213,57 @@ body {
 .lead-form input {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-sizing: border-box;
+    font-size: 1rem;
 }
 
-.btn-submit {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-    background-color: #2980b9;
-}
-
-.btn-submit:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
+.lead-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 .form-message {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 4px;
     text-align: center;
-    color: #27ae60;
     font-weight: bold;
+    color: var(--secondary-color);
+    background-color: rgba(46, 204, 113, 0.1);
 }
 
-/* Admin Page */
+.form-message.error {
+    color: var(--accent-color);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* ========================================================================= */
+/* Admin Page & Tabs */
+/* ========================================================================= */
+
 .admin-page {
-    padding: 2rem;
+    padding: 2rem 1rem;
 }
 
 .admin-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 2rem;
 }
 
 .admin-header h2 {
-    color: #2c3e50;
+    color: var(--text-color-dark);
+    margin-bottom: 1rem;
+}
+
+.admin-nav {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
 }
 
 .admin-nav button {
@@ -153,50 +272,65 @@ body {
     padding: 0.75rem 1.5rem;
     cursor: pointer;
     font-size: 1rem;
-    color: #7f8c8d;
-    transition: color 0.3s;
+    color: var(--text-color-medium);
+    transition: color 0.3s, border-bottom 0.3s;
+    font-weight: 600;
 }
 
 .admin-nav button.active {
-    color: #3498db;
-    border-bottom: 2px solid #3498db;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
-/* Lead Table */
+/* ========================================================================= */
+/* LeadTable */
+/* ========================================================================= */
+
 .table-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     overflow-x: auto;
+    max-width: 100%;
+    margin-top: 2rem;
 }
 
-table {
+.lead-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 700px;
 }
 
-th, td {
+.lead-table th,
+.lead-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
 }
 
-th {
+.lead-table thead th {
     background-color: #f2f2f2;
     font-weight: bold;
     color: #555;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
-tr:nth-child(even) {
+.lead-table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-tr:hover {
+.lead-table tbody tr:hover {
     background-color: #f1f1f1;
 }
 
+.lead-table td select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* ========================================================================= */
 /* Login Page */
+/* ========================================================================= */
+
 .login-container {
     display: flex;
     justify-content: center;
@@ -205,10 +339,6 @@ tr:hover {
 }
 
 .login-box {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     text-align: center;
@@ -216,45 +346,48 @@ tr:hover {
 
 .login-box h2 {
     margin-bottom: 1.5rem;
-    color: #2c3e50;
+    color: var(--text-color-dark);
 }
 
 .login-box .form-group {
     text-align: left;
+    margin-bottom: 1rem;
 }
 
-.btn-primary {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 1rem;
-    transition: background-color 0.3s;
-}
+/* ========================================================================= */
+/* ScoringRules */
+/* ========================================================================= */
 
-.btn-primary:hover {
-    background-color: #27ad60;
-}
-
-/* Scoring Rules */
 .rules-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
 }
 
 .rule-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.rule-form h4 {
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .rule-form input {
-    margin-right: 10px;
+    flex: 1;
+    min-width: 150px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.btn-add {
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 .rules-list ul {
@@ -264,22 +397,181 @@ tr:hover {
 
 .rules-list li {
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     margin-bottom: 10px;
 }
 
-.rule-details {
+.rule-details,
+.edit-form {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .rule-details p {
     margin: 0;
 }
 
-.rule-details button {
-    margin-left: 10px;
+.rule-details button,
+.edit-form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+.edit-form button:first-of-type {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.edit-form button:last-of-type {
+    background-color: #ccc;
+    color: #333;
+}
+
+/* ========================================================================= */
+/* Footer */
+/* ========================================================================= */
+
+.footer-container {
+    margin-top: auto;
+    padding: 2rem 1rem;
+    background-color: var(--text-color-dark);
+    color: var(--text-color-light);
+    text-align: center;
+    border-top: 1px solid #444;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    margin-top: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-color-light);
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.separator {
+    color: #555;
+}
+
+/* ========================================================================= */
+/* Responsive Design */
+/* ========================================================================= */
+
+/* Tablet & Smaller Desktops */
+@media (max-width: 1024px) {
+    .container {
+        padding: 1rem 1.5rem;
+    }
+    
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+    
+    .admin-nav {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .navbar-links {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .navbar-links a,
+    .navbar-links button {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    .admin-page {
+        padding: 1rem;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .admin-nav button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .rule-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .rule-form input,
+    .btn-add {
+        width: 100%;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .rules-list li {
+        padding: 0.75rem;
+    }
+    
+    .rule-details,
+    .edit-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+
+    .rule-details button {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .edit-form button {
+        width: 100%;
+    }
 }
